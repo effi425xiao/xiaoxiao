@@ -5,7 +5,7 @@ from langchain.schema.output_parser import StrOutputParser
 from langchain.schema.runnable import (
     RunnableLambda,
     RunnablePassthrough,
-)
+)# E 3
 from langchain.memory import ConversationBufferMemory
 from langchain import hub
 import chainlit as cl
