@@ -5,7 +5,7 @@ from langchain.schema.output_parser import StrOutputParser
 from langchain.schema.runnable import (
     RunnableLambda,
     RunnablePassthrough,
-)# E 3
+)
 from langchain.memory import ConversationBufferMemory
 from langchain import hub
 import chainlit as cl
@@ -39,7 +39,7 @@ def store_chat_history(history: list, n: int = 4, vdb=vdb, namespace="past_chats
     # Combine the last n items into a single string
     combined_text = " ".join(
         [
-            f"{'xiaofanli' if item.type == 'ai' else 'xiao'}: {item.content}"
+            f"{'xiaoxiao' if item.type == 'ai' else 'xiao'}: {item.content}"
             for item in last_n_items
         ]
     )
@@ -95,10 +95,10 @@ def setup_runnable(session_id):
     cl.user_session.set("runnable", runnable)
 
 
-avatar_url = "https://i.ibb.co/2j76LDW/logo-dark-copy.png"
-avatar_url = "https://storage.googleapis.com/xfanli/xiaofanli2_small.png"
+avatar_url = "https://i.ibb.co/MRFLZcd/xiaoxiao.webp"
+avatar_url = "https://storage.googleapis.com/xiaoxiao_app/IMG_xiaoxiao.png"
 
-drop_image = "https://i.ibb.co/2j76LDW/logo-dark-copy.png"
+drop_image = "https://i.ibb.co/MRFLZcd/xiaoxiao.webp"
 
 
 @cl.on_chat_start
@@ -114,9 +114,9 @@ async def on_chat_start():
     setup_runnable(cl.user_session.get("id"))
 
     first_message = (
-        "Hello! I'm xiao fanli, nice to meet you. \n\n"
-        "![Image](https://storage.googleapis.com/xfanli/xiaofanli2_small.png)"
-        "\n\n I might know you and have some notes for you. Place your chinese name here."
+        "Hello! I'm xiao xiao, nice to meet you. \n\n"
+        "![Image](https://storage.googleapis.com/xiaoxiao_app/IMG_xiaoxiao.png)"
+        "\n\n I might know you and have some notes for you. Place your name here."
     )
     msg = cl.Message(content=first_message)
 
